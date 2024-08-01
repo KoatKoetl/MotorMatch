@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import Container from "./container";
-import { Logo } from "./Navbar";
+import { Link } from 'react-router-dom';
+import Container from './container';
+import { Logo } from './Navbar';
 
 export default function Footer() {
   return (
@@ -51,11 +51,11 @@ export default function Footer() {
       <div className="bg-gray-200 p-4">
         <Container>
           <div className="flex justify-between">
-            <p>&copy; 2024 KBD DEEP. All rights reserved.</p>
+            <p>&copy; 2024 MotorMatch. All rights reserved.</p>
             <p>
-              Designed by{" "}
-              <a href="https://github.com/mhlehri" className="underline">
-                @mhlehri
+              Developed by{' '}
+              <a href="https://github.com/KoatKoetl" className="underline">
+                @KoatKoetl
               </a>
             </p>
           </div>

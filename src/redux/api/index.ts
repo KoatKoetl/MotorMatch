@@ -1,86 +1,86 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const baseApi = createApi({
-  reducerPath: "productApi",
+  reducerPath: 'productApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://kbd-deep-server.vercel.app/api",
-    // baseUrl: "http://localhost:1000/api",
+    // baseUrl: "https://kbd-deep-server.vercel.app/api",
+    baseUrl: 'http://localhost:3001/api',
   }),
-  tagTypes: ["products"],
+  tagTypes: ['products'],
 
   endpoints: (builder) => ({
     getProducts: builder.query({
       query: (query) => {
         const params = new URLSearchParams();
         if (query?.search) {
-          params.append("search", query.search);
+          params.append('search', query.search);
         }
         if (query?.sort) {
-          params.append("sort", query.sort);
+          params.append('sort', query.sort);
         }
         if (query?.min) {
-          params.append("min", query.min);
+          params.append('min', query.min);
         }
         if (query?.max) {
-          params.append("max", query.max);
+          params.append('max', query.max);
         }
         return {
           url: `/products`,
-          method: "GET",
+          method: 'GET',
           params,
         };
       },
-      providesTags: [{ type: "products" }],
+      providesTags: [{ type: 'products' }],
     }),
 
     getProductBySlug: builder.query({
       query: (slug) => ({
         url: `/products/${slug}`,
-        method: "GET",
+        method: 'GET',
       }),
-      providesTags: [{ type: "products" }],
+      providesTags: [{ type: 'products' }],
     }),
 
     addProduct: builder.mutation({
       query: (body) => {
         return {
-          url: "/products",
-          method: "POST",
+          url: '/products',
+          method: 'POST',
           body,
         };
       },
-      invalidatesTags: ["products"],
+      invalidatesTags: ['products'],
     }),
 
     removeProduct: builder.mutation({
       query: (id) => {
         return {
           url: `/products/${id}`,
-          method: "DELETE",
+          method: 'DELETE',
         };
       },
-      invalidatesTags: ["products"],
+      invalidatesTags: ['products'],
     }),
 
     updateProduct: builder.mutation({
       query: ({ _id, ...body }) => {
         return {
           url: `/products/${_id}`,
-          method: "PUT",
+          method: 'PUT',
           body,
         };
       },
-      invalidatesTags: ["products"],
+      invalidatesTags: ['products'],
     }),
     updateProducts: builder.mutation({
       query: (body) => {
         return {
           url: `/products`,
-          method: "PUT",
+          method: 'PUT',
           body,
         };
       },
-      invalidatesTags: ["products"],
+      invalidatesTags: ['products'],
     }),
   }),
 });

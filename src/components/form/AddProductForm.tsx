@@ -1,74 +1,67 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 
-import { PackagePlusIcon } from "lucide-react";
-import { Button } from "../../components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "../../components/ui/form";
-import { Input } from "../../components/ui/input";
-import { useAddProductMutation } from "../../redux/api";
-import Title from "../Title";
-import { Textarea } from "../ui/textarea";
-import { toast } from "sonner";
+import { PackagePlusIcon } from 'lucide-react';
+import { toast } from 'sonner';
+import { Button } from '../../components/ui/button';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../../components/ui/form';
+import { Input } from '../../components/ui/input';
+import { useAddProductMutation } from '../../redux/api';
+import Title from '../Title';
+import { Textarea } from '../ui/textarea';
 
 const formSchema = z.object({
   name: z
     .string({
-      required_error: "Product name is required.",
+      required_error: 'Product name is required.',
     })
     .min(2, {
-      message: "Product name must be at least 2 characters.",
+      message: 'Product name must be at least 2 characters.',
     }),
   brand: z
     .string({
-      required_error: "Brand name is required.",
+      required_error: 'Brand name is required.',
     })
     .min(2, {
-      message: "Brand name must be at least 2 characters.",
+      message: 'Brand name must be at least 2 characters.',
     }),
   price: z
     .string({
-      required_error: "Price is required.",
+      required_error: 'Price is required.',
     })
     .min(1, {
-      message: "Price is required.",
+      message: 'Price is required.',
     }),
   description: z
     .string({
-      required_error: "Description is required.",
+      required_error: 'Description is required.',
     })
-    .min(2, { message: "Description must be at least 2 characters long." }),
+    .min(2, { message: 'Description must be at least 2 characters long.' }),
   quantity: z
     .string({
-      required_error: "Quantity is required.",
+      required_error: 'Quantity is required.',
     })
     .min(1, {
-      message: "Quantity is required.",
+      message: 'Quantity is required.',
     }),
   rating: z
     .string({
-      required_error: "Rating is required.",
+      required_error: 'Rating is required.',
     })
     .min(1, {
-      message: "Rating is required.",
+      message: 'Rating is required.',
     })
     .max(5, {
-      message: "Rating must be between 1 and 5.",
+      message: 'Rating must be between 1 and 5.',
     }),
   image: z
     .string({
-      required_error: "Image is required.",
+      required_error: 'Image is required.',
     })
     .url()
     .min(1, {
-      message: "Image is required.",
+      message: 'Image is required.',
     }),
 });
 
@@ -80,7 +73,7 @@ export default function AddProductForm() {
   const [addProduct, { isLoading }] = useAddProductMutation();
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    const slug = values.name.replace(/\s/g, "-").toLowerCase();
+    const slug = values.name.replace(/\s/g, '-').toLowerCase();
     const res = await addProduct({ slug, ...values });
     if (res.data.success) {
       toast.success(`${res.data.message}`);
@@ -91,16 +84,11 @@ export default function AddProductForm() {
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-4 max-w-xl p-8 border rounded-lg mb-10"
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 max-w-xl p-8 border rounded-lg mb-10">
         <Title>
           <PackagePlusIcon /> Add New Product
         </Title>
-        <p>
-          Please fill out the form below to add a new product to the inventory.
-        </p>
+        <p>Please fill out the form below to add a new product to the inventory.</p>
         <div className="flex gap-2 *:w-full">
           <FormField
             control={form.control}
@@ -122,13 +110,7 @@ export default function AddProductForm() {
               <FormItem>
                 <FormLabel>Price</FormLabel>
                 <FormControl>
-                  <Input
-                    min={1}
-                    max={1000}
-                    type="number"
-                    placeholder="product price"
-                    {...field}
-                  />
+                  <Input min={1} type="number" placeholder="product price" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -170,12 +152,7 @@ export default function AddProductForm() {
               <FormItem>
                 <FormLabel>Available Quantity</FormLabel>
                 <FormControl>
-                  <Input
-                    type="number"
-                    min={1}
-                    placeholder="available quantity"
-                    {...field}
-                  />
+                  <Input type="number" min={1} placeholder="available quantity" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -188,13 +165,7 @@ export default function AddProductForm() {
               <FormItem>
                 <FormLabel>Rating</FormLabel>
                 <FormControl>
-                  <Input
-                    type="number"
-                    min={1}
-                    max={5}
-                    placeholder="rating"
-                    {...field}
-                  />
+                  <Input type="number" min={1} max={5} placeholder="rating" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -225,7 +196,7 @@ export default function AddProductForm() {
           }
           type="submit"
         >
-          {isLoading ? "Submitting.." : "Submit"}
+          {isLoading ? 'Submitting..' : 'Submit'}
         </Button>
       </form>
     </Form>

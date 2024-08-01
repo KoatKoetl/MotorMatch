@@ -1,10 +1,10 @@
-import { DollarSign, ShoppingBag, ShoppingCart } from "lucide-react";
-import { Link } from "react-router-dom";
-import { Button } from "../components/ui/button";
-import { CartTable } from "../components/table/CartTable";
-import PricingDetails from "../components/card/PricingDetails";
-import Title from "../components/Title";
-import { useEffect } from "react";
+import { DollarSign, ShoppingBag, ShoppingCart } from 'lucide-react';
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import PricingDetails from '../components/card/PricingDetails';
+import { CartTable } from '../components/table/CartTable';
+import Title from '../components/Title';
+import { Button } from '../components/ui/button';
 
 export default function Cart() {
   useEffect(() => {
@@ -25,9 +25,9 @@ export default function Cart() {
                 <ShoppingBag /> Shop More
               </Title>
               <Title>
-                <DollarSign /> Save More{" "}
+                <DollarSign /> Save More{' '}
               </Title>
-              <p>Get free shipping on orders over $200.00</p>
+              <p>Get free shipping on orders over $100000.00</p>
               <Button asChild>
                 <Link to="/products">Continue Shopping</Link>
               </Button>

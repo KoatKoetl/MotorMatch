@@ -1,5 +1,5 @@
-import { MessageSquareHeart, Sparkles, Trophy, Truck } from "lucide-react";
-import { Card, CardDescription, CardHeader, CardTitle } from "../ui/card";
+import { MessageSquareHeart, Sparkles, Trophy, Truck } from 'lucide-react';
+import { Card, CardDescription, CardHeader, CardTitle } from '../ui/card';
 
 export default function Service() {
   return (
@@ -7,22 +7,22 @@ export default function Service() {
       <Card>
         <CardHeader>
           <Truck />
-          <CardTitle>Free Shipping</CardTitle>
-          <CardDescription>On all orders over $200</CardDescription>
+          <CardTitle>Fast Shipping</CardTitle>
+          <CardDescription>On all orders</CardDescription>
         </CardHeader>
       </Card>
       <Card>
         <CardHeader>
           <Sparkles />
           <CardTitle>Top Quality</CardTitle>
-          <CardDescription>Quality products</CardDescription>
+          <CardDescription>Only verified cars</CardDescription>
         </CardHeader>
       </Card>
       <Card>
         <CardHeader>
           <Trophy />
-          <CardTitle>Top Brands</CardTitle>
-          <CardDescription>Shop from top brands</CardDescription>
+          <CardTitle>Top Models</CardTitle>
+          <CardDescription>Buy only from the top ones</CardDescription>
         </CardHeader>
       </Card>
       <Card>

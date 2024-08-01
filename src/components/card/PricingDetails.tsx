@@ -1,13 +1,7 @@
-import { Link, useLocation } from "react-router-dom";
-import { Button } from "../ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "../ui/card";
-import { useAppSelector } from "../../redux/hook";
+import { Link, useLocation } from 'react-router-dom';
+import { useAppSelector } from '../../redux/hook';
+import { Button } from '../ui/button';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../ui/card';
 
 export default function PricingDetails() {
   const { pathname } = useLocation();
@@ -15,8 +9,8 @@ export default function PricingDetails() {
   const subTotal = cart.reduce((acc, item) => {
     return (acc += item.price * item.quantity);
   }, 0);
-  const shippingCost = subTotal > 200 ? 0 : subTotal ? 40 : 0;
-  const tax = subTotal ? 2 : 0;
+  const shippingCost = subTotal > 100000 ? 0 : subTotal ? 3500 : 0;
+  const tax = subTotal ? 1000 : 0;
   const total = subTotal + shippingCost + tax;
   return (
     <Card className="w-full max-w-sm">
@@ -42,12 +36,9 @@ export default function PricingDetails() {
           <p>${total}</p>
         </div>
       </CardContent>
-      {pathname.includes("cart") && cart.length > 0 && total > 0 && (
+      {pathname.includes('cart') && cart.length > 0 && total > 0 && (
         <CardFooter>
-          <Button
-            className="w-full bg-zinc-500 text-white py-3 rounded-md"
-            asChild
-          >
+          <Button className="w-full bg-zinc-500 text-white py-3 rounded-md" asChild>
             <Link to="/checkout">Proceed to Checkout</Link>
           </Button>
         </CardFooter>

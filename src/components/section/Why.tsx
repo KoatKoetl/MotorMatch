@@ -1,73 +1,45 @@
-import Title from "../Title";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "../ui/accordion";
+import Title from '../Title';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion';
 
 export default function Why() {
   return (
     <div>
-      <Title className="text-3xl font-bold text-gray-800 mb-4">
-        Why Choose Mechanical Keyboards?
-      </Title>
+      <Title className="text-3xl font-bold text-gray-800 mb-4">Why Choose our Service?</Title>
       <p>Here are common FAQ.</p>
       <div className="mt-10 flex gap-10 justify-center items-center lg:justify-between flex-col lg:flex-row">
-        <Accordion
-          type="single"
-          collapsible
-          className="w-full max-w-xl"
-          defaultValue="item-1"
-        >
+        <Accordion type="single" collapsible className="w-full max-w-xl" defaultValue="item-1">
           <AccordionItem value="item-1">
-            <AccordionTrigger>Superior Typing Experience</AccordionTrigger>
+            <AccordionTrigger>Extensive Inventory</AccordionTrigger>
             <AccordionContent>
-              Mechanical keyboards offer a superior typing experience compared
-              to membrane keyboards. Each key has its own mechanical switch,
-              providing tactile feedback and a satisfying click with every
-              press. This feedback can help reduce typing errors and increase
-              typing speed.
+              MotorMatch aggregates listings from multiple websites, providing you with a vast selection of cars to choose from. Whether
+              you're looking for a new or used vehicle, you can easily find the perfect match.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
-            <AccordionTrigger>Durability and Longevity</AccordionTrigger>
+            <AccordionTrigger>User-Friendly Interface</AccordionTrigger>
             <AccordionContent>
-              Mechanical keyboards are built to last. The individual switches
-              are rated for tens of millions of keystrokes, making them far more
-              durable than their membrane counterparts. This durability ensures
-              that your keyboard will remain in excellent working condition for
-              years, even with heavy use.
+              MotorMatch offers a seamless and intuitive browsing experience. The advanced search filters allow you to narrow down your
+              options based on make, model, price, location, and other preferences, making the car-buying process efficient and enjoyable.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-3">
-            <AccordionTrigger>Customization Options</AccordionTrigger>
+            <AccordionTrigger>Comprehensive Information</AccordionTrigger>
             <AccordionContent>
-              One of the biggest advantages of mechanical keyboards is the level
-              of customization they offer. From different switch types (linear,
-              tactile, clicky) to custom keycaps and backlighting, you can
-              personalize your keyboard to fit your preferences and style. This
-              customization can enhance both the functionality and aesthetic of
-              your keyboard.
+              Each car listing on MotorMatch includes detailed descriptions, high-quality images, and key specifications. This ensures you
+              have all the information you need to make an informed decision without having to visit multiple websites.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-4">
-            <AccordionTrigger> Improved Gaming Performance</AccordionTrigger>
+            <AccordionTrigger>Reliable and Secure</AccordionTrigger>
             <AccordionContent>
-              For gamers, mechanical keyboards provide several benefits. The
-              faster response times and more accurate keystrokes can give you an
-              edge in competitive gaming. Additionally, features like N-key
-              rollover and anti-ghosting ensure that every keypress is
-              registered, even when multiple keys are pressed simultaneously.
+              MotorMatch prioritizes your safety and satisfaction. By redirecting you to the original listing websites for transactions,
+              MotorMatch ensures that you are dealing with verified sellers, providing peace of mind and a trustworthy car-buying
+              experience.
             </AccordionContent>
           </AccordionItem>
         </Accordion>
         <div>
-          <img
-            src="/images/hero/_.jpeg"
-            alt=""
-            className="max-w-sm rounded-lg"
-          />
+          <img src="/images/hero/_.jpeg" alt="" className="max-w-sm rounded-lg" />
         </div>
       </div>
     </div>

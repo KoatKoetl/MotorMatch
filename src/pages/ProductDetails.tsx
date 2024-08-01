@@ -113,7 +113,7 @@ export default function ProductDetails() {
               <ShoppingBag /> Shop More
               <DollarSign /> Save More{" "}
             </Title>
-            <p>Get free shipping on orders over $200.00</p>
+            <p>Get free shipping on orders over $1000000.00</p>
             <Button asChild>
               <Link to="/products">Continue Shopping</Link>
             </Button>
