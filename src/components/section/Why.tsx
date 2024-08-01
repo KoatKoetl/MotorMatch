@@ -39,7 +39,7 @@ export default function Why() {
           </AccordionItem>
         </Accordion>
         <div>
-          <img src="/images/hero/_.jpeg" alt="" className="max-w-sm rounded-lg" />
+          <img src="/images/hero/6.jpg" alt="" className="max-w-sm rounded-lg" />
         </div>
       </div>
     </div>
