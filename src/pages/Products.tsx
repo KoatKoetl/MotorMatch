@@ -1,32 +1,18 @@
-import { Search } from "lucide-react";
-import Slider from "rc-slider";
-import "rc-slider/assets/index.css";
-import { useEffect, useState } from "react";
-import ProductCard from "../components/card/ProductCard";
-import Loading from "../components/Loading";
-import NotDataFound from "../components/NotDataFound";
-import Title from "../components/Title";
-import { Input } from "../components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "../components/ui/select";
-import useDebounce from "../hooks/useDebounce";
-import { useGetProductsQuery } from "../redux/api";
-import { TProduct } from "../type";
-import { Button } from "../components/ui/button";
-export function SortBy({
-  sort,
-  setSort,
-}: {
-  sort: string;
-  setSort: React.Dispatch<React.SetStateAction<string>>;
-}) {
+import { Search } from 'lucide-react';
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
+import { useEffect, useState } from 'react';
+import ProductCard from '../components/card/ProductCard';
+import Loading from '../components/Loading';
+import NotDataFound from '../components/NotDataFound';
+import Title from '../components/Title';
+import { Button } from '../components/ui/button';
+import { Input } from '../components/ui/input';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '../components/ui/select';
+import useDebounce from '../hooks/useDebounce';
+import { useGetProductsQuery } from '../redux/api';
+import { TProduct } from '../type';
+export function SortBy({ sort, setSort }: { sort: string; setSort: React.Dispatch<React.SetStateAction<string>> }) {
   return (
     <Select
       value={sort}
@@ -49,15 +35,16 @@ export function SortBy({
 }
 
 export default function Products() {
-  const [search, setSearch] = useState("");
-  const [sort, setSort] = useState("");
+  const [search, setSearch] = useState('');
+  const [sort, setSort] = useState('');
   const [sliderValues, setSliderValues] = useState<number[] | []>([]);
   const debounceValue = useDebounce(search);
   const { data, isFetching, isLoading, isSuccess } = useGetProductsQuery({
     search: debounceValue,
     sort,
-    min: sliderValues?.length && sliderValues[0],
-    max: sliderValues?.length && sliderValues[1],
+    // Multiply by million to get correct results
+    min: sliderValues?.length && sliderValues[0] * 1000000,
+    max: sliderValues?.length && sliderValues[1] * 1000000,
   });
 
   useEffect(() => {
@@ -68,8 +55,8 @@ export default function Products() {
     <div>
       <Title className="mt-10 hidden 2xl:block">All products</Title>
       <div className="flex flex-col 2xl:flex-row gap-10 my-10">
-        <div className="h-fit flex gap-5 flex-col px-3 2xl:px-0 sm:flex-row 2xl:flex-col 2xl:sticky top-20 justify-between 2xl:justify-normal 2xl:max-w-xs">
-          <div className="max-w-sm w-full space-y-5">
+        <div className="h-fit flex gap-5 flex-col px-3 2xl:px-0 sm:flex-row 2xl:flex-col 2xl:sticky top-20 justify-between 2xl:justify-normal 2xl:w-80">
+          <div className="max-w-md w-full space-y-5">
             <div className="flex w-full max-w-sm items-center space-x-2">
               <Input
                 onChange={(e) => {
@@ -86,17 +73,16 @@ export default function Products() {
               <h6 className="mb-2">Filter by price range</h6>
               <Slider
                 range
-                min={1}
-                max={1000}
-                defaultValue={[1, 1000]}
-                value={sliderValues?.length ? sliderValues : [1, 1000]}
+                min={0}
+                max={200}
+                defaultValue={[0, 200]}
+                value={sliderValues?.length ? sliderValues : [0, 200]}
                 onChange={(values) => {
                   setSliderValues(values as number[]);
                 }}
               />
               <p className="text-sm">
-                Selected range: {sliderValues[0] || 1} to{" "}
-                {sliderValues[1] || 1000}
+                Selected range: {sliderValues[0] || 0}M to {sliderValues[1] || 200}M
               </p>
             </div>
           </div>
@@ -104,9 +90,9 @@ export default function Products() {
             <SortBy sort={sort} setSort={setSort} />
             <Button
               onClick={() => {
-                setSliderValues([1, 1000]);
-                setSearch("");
-                setSort("");
+                setSliderValues([0, 200]);
+                setSearch('');
+                setSort('');
               }}
               className="w-fit"
               variant="destructive"

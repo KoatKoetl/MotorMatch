@@ -110,7 +110,7 @@ export default function AddProductForm() {
               <FormItem>
                 <FormLabel>Price</FormLabel>
                 <FormControl>
-                  <Input min={1} type="number" placeholder="product price" {...field} />
+                  <Input min={1} max={200000000} type="number" placeholder="product price" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

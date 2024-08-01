@@ -72,6 +72,7 @@ export const baseApi = createApi({
       },
       invalidatesTags: ['products'],
     }),
+
     updateProducts: builder.mutation({
       query: (body) => {
         return {

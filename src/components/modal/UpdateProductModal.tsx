@@ -1,24 +1,15 @@
-import { useState } from "react";
-import { TProduct } from "../../type";
-import { Button } from "../ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "../ui/dialog";
-import { Input } from "../ui/input";
-import { Label } from "../ui/label";
-import { Textarea } from "../ui/textarea";
-import { useUpdateProductMutation } from "../../redux/api";
-import { toast } from "sonner";
+import { useState } from 'react';
+import { toast } from 'sonner';
+import { useUpdateProductMutation } from '../../redux/api';
+import { TProduct } from '../../type';
+import { Button } from '../ui/button';
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog';
+import { Input } from '../ui/input';
+import { Label } from '../ui/label';
+import { Textarea } from '../ui/textarea';
 
 export default function UpdateProductModal({ item }: { item: TProduct }) {
-  const { _id, brand, description, image, name, price, quantity, rating } =
-    item;
+  const { _id, brand, description, image, name, price, quantity, rating } = item;
   const [open, setOpen] = useState(false);
 
   const [update] = useUpdateProductMutation();
@@ -77,34 +68,20 @@ export default function UpdateProductModal({ item }: { item: TProduct }) {
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Update Product</DialogTitle>
-          <DialogDescription>
-            Make changes to your product here. Click save when you're done.
-          </DialogDescription>
+          <DialogDescription>Make changes to your product here. Click save when you're done.</DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="name" className="sm:text-right">
               Name
             </Label>
-            <Input
-              required
-              id="name"
-              name="name"
-              defaultValue={name}
-              className="col-span-4 sm:col-span-3"
-            />
+            <Input required id="name" name="name" defaultValue={name} className="col-span-4 sm:col-span-3" />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="brand" className="sm:text-right">
               Brand
             </Label>
-            <Input
-              required
-              id="brand"
-              name="brand"
-              defaultValue={brand}
-              className="col-span-4 sm:col-span-3"
-            />
+            <Input required id="brand" name="brand" defaultValue={brand} className="col-span-4 sm:col-span-3" />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="price" className="sm:text-right">
@@ -114,7 +91,7 @@ export default function UpdateProductModal({ item }: { item: TProduct }) {
               required
               type="number"
               min={1}
-              max={1000}
+              max={200000000}
               id="price"
               name="price"
               defaultValue={price}
@@ -139,12 +116,7 @@ export default function UpdateProductModal({ item }: { item: TProduct }) {
             <Label htmlFor="description" className="sm:text-right">
               Description
             </Label>
-            <Textarea
-              id="description"
-              name="description"
-              defaultValue={description}
-              className="col-span-4 sm:col-span-3"
-            />
+            <Textarea id="description" name="description" defaultValue={description} className="col-span-4 sm:col-span-3" />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="rating" className="sm:text-right">
@@ -165,14 +137,7 @@ export default function UpdateProductModal({ item }: { item: TProduct }) {
             <Label htmlFor="image-url" className="sm:text-right">
               Image
             </Label>
-            <Input
-              required
-              type="url"
-              id="image-url"
-              name="image"
-              defaultValue={image}
-              className="col-span-4 sm:col-span-3"
-            />
+            <Input required type="url" id="image-url" name="image" defaultValue={image} className="col-span-4 sm:col-span-3" />
           </div>
           <DialogFooter>
             <Button type="submit" className="bg-blue-600">
