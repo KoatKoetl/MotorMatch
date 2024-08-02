@@ -54,8 +54,12 @@ export default function Footer() {
             <p>&copy; 2024 MotorMatch. All rights reserved.</p>
             <p>
               Developed by{' '}
-              <a href="https://github.com/KoatKoetl" className="underline">
+              <a href="https://github.com/KoatKoetl" className="underline" target="blank">
                 @KoatKoetl
+              </a>{' '}
+              based on{' '}
+              <a href="https://github.com/mhlehri/kbd-deep" target="blank" className="underline">
+                this
               </a>
             </p>
           </div>

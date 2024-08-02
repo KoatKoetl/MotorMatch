@@ -63,6 +63,13 @@ const formSchema = z.object({
     .min(1, {
       message: 'Image is required.',
     }),
+  password: z
+    .string({
+      required_error: 'Password is required.',
+    })
+    .min(1, {
+      message: 'Password is required.',
+    }),
 });
 
 export default function AddProductForm() {
@@ -180,6 +187,19 @@ export default function AddProductForm() {
               <FormLabel>Image Url</FormLabel>
               <FormControl>
                 <Input placeholder="image url" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Password</FormLabel>
+              <FormControl>
+                <Input type="password" placeholder="auth password" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
