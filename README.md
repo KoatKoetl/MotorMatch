@@ -1,11 +1,12 @@
 # MotorMatch - E-commerce website
-https://motormatch.onrender.com
-https://motormatch-api.onrender.com
+
+[Website](https://motormatch.onrender.com) deployed on Render.com
+
 ## About
 MotorMatch is a website that is a small example of e-commerce website. </br>
 It have front-end and a back-end with mongodb database. <br>
-1. **Front-end part** can be accessed using <a href="https://github.com/KoatKoetl/motorMatch" target="blank">link</a> 
-2. **Back-end part** can be accessed using <a href="https://github.com/KoatKoetl/motorMatch-server" target="blank">link</a> 
+1. **Front-end github repo** can be accessed using <a href="https://github.com/KoatKoetl/motorMatch" target="blank">link</a> 
+2. **Back-end github repo** can be accessed using <a href="https://github.com/KoatKoetl/motorMatch-server" target="blank">link</a> 
 3. **The database** is implemented using MongoDB Atlas free cluster.
 
 ## Preview
@@ -190,3 +191,10 @@ bun run prod
 db connected successfully
 Server running on port http://localhost:3001
 ```
+## Docker images
+
+### Front-end image
+The front-end image can be accessed using [link](https://hub.docker.com/repository/docker/stan1sl4w/motormatch)
+
+### Back-end image
+The front-end image can be accessed using [link](https://hub.docker.com/repository/docker/stan1sl4w/motormatch-server/general)
